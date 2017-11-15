@@ -4,7 +4,7 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>balloons</title>
+        <title>simon</title>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
         <style>
@@ -12,42 +12,100 @@
                 margin: 0;
                 padding: 0;
                 font-family: sans-serif;
+                background-color: rgb(9, 5, 46);
+                color: white;
             }
 
-            #hra {
+            #game {
                 display: flex;
-                flex: 1;
-                min-height: 100vh;
-                align-items: center;
-                justify-content: center;
             }
 
-            #balloons {
-                margin-right: 5em;
+            #panel {
+                display: flex;
+                margin-right: 10vw;
+                flex-direction: column;
             }
 
-            #balloon {
+            #panel button {
                 
             }
+
+            #simon {
+                display: flex;
+                width: 400px;
+                height: 400px;
+                flex-wrap: wrap;
+            }
+
+            .blue, .red, .yellow, .green {
+                transition: all 0.2s;
+                box-sizing: border-box;
+                min-width: 200px;
+                height: 200px;
+            }
+
+            .red {
+                background-color: rgb(197, 68, 21);
+                border-radius: 100% 0 0 0;
+            }
+            .red:hover {
+                border-top: 15px solid rgb(170, 57, 16);
+                border-left: 15px solid rgb(170, 57, 16);
+            }
+
+            .green {
+                background-color: rgb(32, 199, 124);
+                border-radius: 0 100% 0 0;
+            }
+            .green:hover {
+                border-top: 15px solid rgb(20, 155, 94);
+                border-right: 15px solid rgb(20, 155, 94);
+            }
+
+            .blue {
+                background-color: rgb(26, 142, 209);
+                border-radius: 0 0 0 100%;
+            }
+            .blue:hover {
+                border-bottom: 15px solid rgb(20, 125, 182);
+                border-left: 15px solid rgb(20, 125, 182);
+            }
+
+            .yellow {
+                background-color: rgb(221, 221, 27);
+                border-radius: 0 0 100% 0;
+            }
+            .yellow:hover {
+                border-bottom: 15px solid rgb(197, 197, 23);
+                border-right: 15px solid rgb(197, 197, 23);
+            }
+
+            
         </style>
     </head>
     <body>
-        <div class="input-group">
-                <span class="input-group-addon" id="maxLabel">Pocet balonku</span>
-                <input type="number" id="maxInput" value="8" oninput="setMax()" class="form-control" placeholder="Username" aria-describedby="maxLabel">
-              </div>
+        
 
-        <div id="hra">
-            <div id="balloons" class="alert alert-primary">
-                <h1>Balloons</h1>
-                <p>celkem vybrano Kc: <span id="vybrano">0</span></p>
-                <p>zbyva balonku: <span id="nafouknuto">0</span>/<span id="maxBalonku">8</span></p>
-                <p>Kc: <span id="Kc">0</span></p>
-                <button id="airButton" class="btn btn-primary" onclick="nafoukni()">nafoukni</button>
-                <button class="btn btn-success" onclick="vyber()">vyber</button>
+        <div id="game">
+            <div id="panel">
+                <h1>Simon says ...</h1>
+                <button class="btn btn-success" >Start</button>
             </div>
-            <img src="" id="balloon" width="341" height="443" onclick="popBalloon()">
+            <div id="simon">
+                    
+                    <div class="simElement red" data-color="red" onclick="playSound('red')"></div>
+                    <div class="simElement green" data-color="green" onclick="playSound('green')"></div>
+                    <div class="simElement blue" data-color="blue" onclick="playSound('blue')"></div>
+                    <div class="simElement yellow" data-color="yellow" onclick="playSound('yellow')"></div>
+                    
+            </div>
         </div>
+
+
+        <audio id="red" src="./sounds/red.wav"></audio>
+        <audio id="blue" src="./sounds/blue.wav"></audio>
+        <audio id="yellow" src="sounds/yellow.wav"></audio>
+        <audio id="green" src="sounds/green.wav"></audio>
 
         <script src="script.js" defer></script> 
     </body>
