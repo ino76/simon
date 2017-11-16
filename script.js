@@ -54,7 +54,10 @@ function listen(pushedButton) {
         if (position === sequenceLength) {
             position = 0
             points++
-            start()
+            setTimeout(function(){
+                start()
+            }, 800)
+            
         }
 
     } else {
@@ -76,7 +79,7 @@ function playSequence() {
             clearInterval(interval)
             active = false
         }
-   }, 800);
+   }, 600);
 }
 
 
