@@ -18,6 +18,10 @@
 
             #game {
                 display: flex;
+                width: 100vw;
+                height: 100vh;
+                align-items: center;
+                justify-content: center;
             }
 
             #panel {
@@ -44,27 +48,29 @@
                 height: 200px;
             }
 
-            .simElement:hover {
-                border: 9px solid rgba(255, 255, 255, 0.24);
+            .simBut:hover {
+                /* border: 5px solid rgba(255, 255, 255, 0.164); */
+                /* box-shadow: 0 0 15px  #ffffff; */
             }
 
             .red {
-                background-color: rgb(197, 68, 21);
+                /* background-color: hsl(16, 83%, 43%); */
                 border-radius: 100% 0 0 0;
+                background-color: hsl(204, 78%, 40%);
             }
           
             .green {
-                background-color: rgb(32, 199, 124);
+                /* background-color: hsl(153, 72%, 45%); */
                 border-radius: 0 100% 0 0;
             }
           
             .blue {
-                background-color: rgb(26, 142, 209);
+                /* background-color: hsl(202, 78%, 46%); */
                 border-radius: 0 0 0 100%;
             }
      
             .yellow {
-                background-color: rgb(221, 221, 27);
+                /* background-color: hsl(60, 78%, 49%); */
                 border-radius: 0 0 100% 0;
             }
       
@@ -80,20 +86,20 @@
                 <button class="btn btn-success" >Start</button>
             </div>
             <div id="simon">
-                    
-                    <div class="simElement red" data-color="red" onclick="playSound('red')"></div>
-                    <div class="simElement green" data-color="green" onclick="playSound('green')"></div>
-                    <div class="simElement blue" data-color="blue" onclick="playSound('blue')"></div>
-                    <div class="simElement yellow" data-color="yellow" onclick="playSound('yellow')"></div>
+                    <div class="simBut red" data-color="0"></div>
+                    <div class="simBut green" data-color="1"></div>
+                    <div class="simBut blue" data-color="2"></div>
+                    <div class="simBut yellow" data-color="3"></div>
                     
             </div>
         </div>
 
 
-        <audio id="red" src="./sounds/red.wav"></audio>
-        <audio id="blue" src="./sounds/blue.wav"></audio>
-        <audio id="yellow" src="sounds/yellow.wav"></audio>
-        <audio id="green" src="sounds/green.wav"></audio>
+        <audio id="0" src="./sounds/0.wav"></audio>
+        <audio id="1" src="sounds/1.wav"></audio>
+        <audio id="2" src="./sounds/2.wav"></audio>
+        <audio id="3" src="sounds/3.wav"></audio>
+
 
         <script src="script.js" defer></script> 
     </body>
