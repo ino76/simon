@@ -1,14 +1,22 @@
 // Simon game
 // author: Daniel Cech 2017
 
+
 const colors = ["hsl(16, 83%, 43%)", "hsl(153, 72%, 45%)", "hsl(204, 78%, 40%)", "hsl(60, 78%, 49%)"]
 const buttons = document.querySelectorAll('.simBut')
-setColors();
+const wrongSound = document.getElementById('wrong')
+setColors()
+setListeners()
+
+let sequence = [0,1,3,3,2,3,0,1]
+let active = false
+let interval
 
 
-buttons.forEach(button => {
-    button.addEventListener('click', push)
-})
+function start() {
+    addNext()
+    playSequence()
+}
 
 
 // set colors at window.load
@@ -18,17 +26,39 @@ function setColors() {
     }
 }
 
+function setListeners() {
+    buttons.forEach(b => b.addEventListener('touchend', push))
+}
+
+
+function listen() {
+}
+
+
+function playSequence() {
+    let i = 0
+    interval = setInterval(function() {
+        push(sequence[i])
+        active = true
+
+        i++
+        if (i >= sequence.length) {
+            clearInterval(interval)
+            active = false
+        }
+   }, 800);
+}
+
+
 function playSound(color) {
     const audio = document.getElementById(color);
     audio.play()
 }
 
-function ahoj(a) {
-    alert('ahoj ' + a)
-}
 
 // after click light up button and dose again
-function lightUp(element, color) {
+function lightUp(color) {
+    const element = document.querySelector(`div[data-color="${color}"]`)
     element.style.backgroundColor = changeHslLight(colors[color], 20)
     element.style.border = '4px solid rgba(0, 0, 0, 0.2)'
     setTimeout(function() {
@@ -40,12 +70,30 @@ function lightUp(element, color) {
 function changeHslLight(hsl, change) {
     const str1 = hsl.slice(0, -9)
     const str = str1 + "100%, 55%)"
-    console.log(str)
     return str
 }
 
-function push() {
-    let color = this.dataset.color
+
+function push(color) {
     playSound(color)
-    lightUp(this, color)
+    lightUp(color)
+}
+
+function playerPush(color) {
+    // const thisButton = document.querySelector(`div[data-color="${color}"`)
+    if (active === true) {
+        wrongSound.play()
+        clearInterval(interval)
+        active = false
+        return
+    }
+    playSound(color)
+    lightUp(color)
+}
+
+
+function addNext() {
+    let random = Math.floor(Math.random() * 4)
+    sequence.push(random)
+    console.log(sequence)
 }
