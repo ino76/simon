@@ -5,7 +5,6 @@
 const colors = ["hsl(16, 83%, 43%)", "hsl(153, 72%, 45%)", "hsl(204, 78%, 40%)", "hsl(60, 78%, 49%)"]
 const buttons = document.querySelectorAll('.simBut')
 const wrongSound = document.getElementById('wrong')
-
 setColors()
 setListeners()
 
