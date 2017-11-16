@@ -30,8 +30,10 @@
                 flex-direction: column;
             }
 
-            #panel button {
-                
+            #result {
+                color: rgb(137, 128, 223);
+                align-self: center;
+                padding-top: 2em;
             }
 
             #simon {
@@ -48,29 +50,21 @@
                 height: 200px;
             }
 
-            .simBut:hover {
-                /* border: 5px solid rgba(255, 255, 255, 0.164); */
-                /* box-shadow: 0 0 15px  #ffffff; */
-            }
 
             .red {
-                /* background-color: hsl(16, 83%, 43%); */
                 border-radius: 100% 0 0 0;
                 background-color: hsl(204, 78%, 40%);
             }
           
             .green {
-                /* background-color: hsl(153, 72%, 45%); */
                 border-radius: 0 100% 0 0;
             }
           
             .blue {
-                /* background-color: hsl(202, 78%, 46%); */
                 border-radius: 0 0 0 100%;
             }
      
             .yellow {
-                /* background-color: hsl(60, 78%, 49%); */
                 border-radius: 0 0 100% 0;
             }
       
@@ -83,7 +77,8 @@
         <div id="game">
             <div id="panel">
                 <h1>Simon says ...</h1>
-                <button class="btn btn-success" onclick="playSequence()">Start</button>
+                <button id="start" class="btn btn-success" onclick="setNew()">Start</button>
+                <span id="result"></span>
             </div>
             <div id="simon">
                     <div class="simBut red" data-color="0" onclick="playerPush('0')"></div>
@@ -100,6 +95,7 @@
         <audio id="2" src="./sounds/2.wav"></audio>
         <audio id="3" src="sounds/3.wav"></audio>
         <audio id="wrong" src="sounds/wrong.wav"></audio>
+        <audio id="wrong2" src="sounds/wrong2.wav"></audio>
 
 
         <script src="script.js" defer></script> 
