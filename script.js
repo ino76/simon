@@ -38,6 +38,7 @@ function setColors() {
     }
 }
 
+
 function setListeners() {
     buttons.forEach(b => b.addEventListener('touchend', push))
 }
