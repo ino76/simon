@@ -104,7 +104,7 @@ function lightUp(color) {
 }
 function changeHslLight(hsl, change) {
     const str1 = hsl.slice(0, -9)
-    const str = str1 + "100%, 60%)"
+    const str = str1 + "100%, 55%)"
     return str
 }
 
