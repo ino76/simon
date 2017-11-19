@@ -4,12 +4,13 @@
 
 const startButton = document.getElementById('start')
 const result = document.getElementById('result')
-const colors = ["hsl(16, 83%, 43%)", "hsl(153, 72%, 45%)", "hsl(204, 78%, 40%)", "hsl(60, 78%, 49%)"]
+const colors = ["hsl(0, 70%, 30%)", "hsl(110, 70%, 30%)", "hsl(210, 70%, 30%)", "hsl(55, 90%, 30%)"]
 const buttons = document.querySelectorAll('.simBut')
 const wrongSound = document.getElementById('wrong')
 const wrongSound2 = document.getElementById('wrong2')
 setColors()
 setListeners()
+
 
 let sequence = []
 let active = false
@@ -144,7 +145,11 @@ function exit() {
     }
     clearInterval(interval)
     active = false
-    result.textContent = 'You have ' + points + ' points.'
+    if(points != 1) {
+        result.textContent = 'You have ' + points + ' points.'
+    } else {
+        result.textContent = 'You have ' + points + ' point.'
+    }
     games++
     startBle(false)
 }
