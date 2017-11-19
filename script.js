@@ -4,7 +4,7 @@
 
 const startButton = document.getElementById('start')
 const result = document.getElementById('result')
-const colors = ["hsl(0, 70%, 30%)", "hsl(110, 70%, 30%)", "hsl(210, 70%, 30%)", "hsl(55, 90%, 30%)"]
+const colors = ["hsl(6, 70%, 30%)", "hsl(110, 70%, 30%)", "hsl(210, 70%, 30%)", "hsl(55, 90%, 30%)"]
 const buttons = document.querySelectorAll('.simBut')
 const wrongSound = document.getElementById('wrong')
 const wrongSound2 = document.getElementById('wrong2')
