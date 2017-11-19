@@ -96,7 +96,6 @@ function playSound(color) {
 function lightUp(color) {
     const element = document.querySelector(`div[data-color="${color}"]`)
     element.style.backgroundColor = changeHslLight(colors[color], 20)
-    element.style.border = '4px solid rgba(0, 0, 0, 0.2)'
     setTimeout(function() {
         element.style.backgroundColor = colors[color]
         element.style.border = 'transparent'
