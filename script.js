@@ -13,6 +13,8 @@ setListeners()
 
 
 let sequence = []
+let inGame = false
+// indicates if computer showing the sequence in this moment
 let active = false
 let interval
 let position = 0
@@ -20,8 +22,18 @@ let points = 0
 let games = 1
 
 
+// this function is started after player click on 'start' button
+// it basically sets and starts new game
+function setNew() {
+    result.textContent = ""
+    startBle(true)
+    start()
+}
+
+
 function startBle(value) {
     startButton.disabled = value
+    inGame = value
 }
 
 
@@ -115,36 +127,35 @@ function push(color) {
 }
 
 function playerPush(color) {
-    // const thisButton = document.querySelector(`div[data-color="${color}"`)
-    if (active === true) {
-        exit()
-        return
+    if(inGame) {
+        if (active === true) {
+            exit()
+            return
+        }
+        if (sequence.length > 0) {
+            listen(Number(color))
+            return
+        }
+    } else {
+        push(color)
     }
-    if (sequence.length > 0) {
-        listen(Number(color))
-        return
-    }
+    
 }
 
 
-function setNew() {
-    position = 0
-    sequence = []
-    result.textContent = ""
-    points = 0
-    startBle(true)
-    start()
-}
+
 
 function exit() {
+    position = 0
+    sequence = []
     
+    points = 0
     if (games != 4){
         wrongSound.play()
     } else {
         wrongSound2.play()
     }
     clearInterval(interval)
-    active = false
     if(points != 1) {
         result.textContent = 'You have ' + points + ' points.'
     } else {
