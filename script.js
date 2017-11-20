@@ -164,6 +164,7 @@ function exit() {
     startBle(false)
 }
 
+
 function addNext() {
     let random = Math.floor(Math.random() * 4)
     sequence.push(random)
