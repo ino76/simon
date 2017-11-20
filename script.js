@@ -150,7 +150,7 @@ function exit() {
     sequence = []
     
     points = 0
-    if (games != 4){
+    if (Math.random() * 100 > 10){
         wrongSound.play()
     } else {
         wrongSound2.play()
