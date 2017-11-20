@@ -148,8 +148,6 @@ function playerPush(color) {
 function exit() {
     position = 0
     sequence = []
-    
-    points = 0
     if (Math.random() * 100 > 10){
         wrongSound.play()
     } else {
@@ -161,6 +159,7 @@ function exit() {
     } else {
         result.textContent = 'You have ' + points + ' point.'
     }
+    points = 0
     games++
     startBle(false)
 }
