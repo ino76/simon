@@ -12,15 +12,22 @@ setColors()
 setListeners()
 
 
-let sequence = []
-let inGame = false
-// indicates if computer showing the sequence in this moment
-let active = false
 let interval
 let position = 0
 let points = 0
 let games = 1
+let sequence = []
 
+// indicates if we are in game 
+let inGame = false
+
+// indicates if computer showing the sequence in this moment
+let active = false
+
+// if last one is set to 'true', game won't play whole sequence but
+// only last one tone 
+let lastOne = false
+let lastOneCheckbox = document.getElementById('lastOne')
 
 // this function is started after player click on 'start' button
 // it basically sets and starts new game
@@ -57,6 +64,7 @@ function setListeners() {
 
 
 function listen(pushedButton) {
+
     let sequenceLength = sequence.length
     console.log("ma zmacknout: " + sequence[position] + ", zmackl: " + pushedButton)
 
@@ -82,16 +90,29 @@ function listen(pushedButton) {
 }
 
 
+function disableCheckbox(value) {
+    lastOneCheckbox.disabled = value
+}
+
 function playSequence() {
-    let i = 0
+    disableCheckbox(true)
+    active = true
+    let i
+
+    if (lastOneCheckbox.checked === true) {
+        i = sequence.length - 1
+    } else {
+        i = 0
+    }
+    
     interval = setInterval(function() {
         push(sequence[i])
-        active = true
-
+        
         i++
         if (i >= sequence.length) {
             clearInterval(interval)
             active = false
+            disableCheckbox(false)
         }
    }, 600);
 }

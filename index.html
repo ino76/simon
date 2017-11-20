@@ -66,7 +66,9 @@
                 border-radius: 0 0 100% 0;
             }
       
-            
+            /* #lastOne {
+                padding: 1em;
+            } */
         </style>
     </head>
     <body>
@@ -76,8 +78,15 @@
             <div id="panel">
                 <h1>Simon says ...</h1>
                 <button id="start" class="btn btn-success" onclick="setNew()">Start</button>
+                <label class="form-check-label">
+                    <input type="checkbox" id="lastOne" value="last">
+                    play only last tone
+                </label>
+                
+
                 <span id="result"></span>
             </div>
+
             <div id="simon">
                     <div class="simBut red" data-color="0" onclick="playerPush('0')"></div>
                     <div class="simBut green nene" data-color="1" onclick="playerPush('1')"></div>
